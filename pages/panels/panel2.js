@@ -1,9 +1,16 @@
 import styles from "./panels.module.css"
 import {Button} from "antd";
 import Router from "next/router";
+import {useDispatch, useSelector} from "react-redux";
+import {isAuthorizationAC} from "../../store/authorization";
 
 const Panel2 = () => {
-    const onButtonPress = () => {
+    const dispatch = useDispatch()
+    const isAuthorization = useSelector(state => state.authorization.isAuthorization)
+    const logout = () => {
+        dispatch(isAuthorizationAC(false))
+    }
+    if (!isAuthorization) {
         Router.push('/authorization')
     }
     return (
@@ -42,7 +49,7 @@ const Panel2 = () => {
                 ex excepturi exercitationem hic id ipsa, iste itaque obcaecati officia
                 quaerat quas quod saepe sed tempora tempore ullam vel?
             </div>
-            <Button onClick={onButtonPress} style={{
+            <Button onClick={logout} style={{
                 background: "dodgerblue",
                 color: "white",
                 borderRadius: "5px",

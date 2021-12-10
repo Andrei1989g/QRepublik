@@ -4,7 +4,8 @@ import {Button, Image, Menu} from 'antd';
 import {
     AppstoreOutlined,
     ContainerOutlined,
-    DesktopOutlined, GlobalOutlined,
+    DesktopOutlined,
+    GlobalOutlined,
     MailOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,

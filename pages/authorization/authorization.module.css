@@ -28,11 +28,5 @@
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 100px;
+    cursor: pointer;
 }
-
-/*.header {*/
-/*    !*display: flex;*!*/
-/*    !*flex-direction: column;*!*/
-/*    !*justify-content: center;*!*/
-/*    !*align-items: center;*!*/
-/*}*/

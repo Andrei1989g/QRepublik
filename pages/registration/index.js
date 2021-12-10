@@ -1,16 +1,20 @@
 import React from 'react';
 import Router from "next/router";
+import Head from "next/head";
 
-const Authorization = () => {
+const Registration = () => {
     const onMainPage = () => {
         Router.push('/')
     }
     return (
         <div>
-            Я страница авторизации
-            <button onClick={onMainPage}>MAIN PAGE</button>
+            <Head>
+                <title>Registration page</title>
+            </Head>
+            Я страница регистрации
+            <button onClick={onMainPage}>Back</button>
         </div>
     );
 };
 
-export default Authorization;
+export default Registration;
