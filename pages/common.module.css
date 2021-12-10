@@ -1,0 +1,12 @@
+.common {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 1440px;
+    height: 1103px;
+    overflow-y: scroll;
+
+    /* Conditional/page-background */
+
+    background: #F0F2F5
+}
