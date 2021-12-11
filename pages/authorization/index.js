@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Form, Input} from "antd";
-import Router from "next/router";
+import Router, {useRouter} from "next/router";
 import Head from "next/head";
 import styles from "./authorization.module.css"
 import Link from "next/link";
 import {CopyrightOutlined, GlobalOutlined, QuestionOutlined} from "@ant-design/icons";
 import {useDispatch, useSelector} from "react-redux";
 import {isAuthorizationAC, setDataAC} from "../../store/authorization";
+import useTranslation from "next-translate/useTranslation"
 
 const Authorization = () => {
+
+    let {locales, push, asPath} = useRouter()
+    // let titleName = router.locale === 'en' ? "Authorization"
+    //     : router.locale === 'ru' ? "Авторизация" : ""
+    let {t} = useTranslation("common")
+
     const [status, setStatus] = useState("error" | "")
     const dispatch = useDispatch()
     const isAuthorization = useSelector(state => state.authorization.isAuthorization)
@@ -23,21 +30,30 @@ const Authorization = () => {
         if (values.email === "admin@admin.com" && values.password === "admin") {
             dispatch(setDataAC({values}))
             dispatch(isAuthorizationAC(true))
-            localStorage.setItem("data",JSON.stringify(values))
+            localStorage.setItem("data", JSON.stringify(values))
         }
     };
 
     const onChangeValues = () => {
         setStatus("")
     }
+    console.log("FROM AUTH ", isAuthorization)
 
     if (isAuthorization) {
-        Router.push("/mainPage")
+        push("/mainPage")
     }
+
     return (
         <>
             <GlobalOutlined
                 style={{position: "fixed", width: "20px", right: "23px", top: "19px"}}/>
+
+            <ul>
+                {locales.map(locale => <li key={locale}>
+                    <Link href={asPath} locale={locale}><a>{locale}</a></Link>
+                </li>)}
+            </ul>
+
             <QuestionOutlined style={{
                 position: "fixed",
                 width: "20px",
@@ -45,17 +61,21 @@ const Authorization = () => {
                 bottom: "40px"
             }}/>
             <div className={styles.main}>
-                <Head>
-                    <title>Authorization page</title>
-                </Head>
+                {/*<Head>*/}
+                {/*    <title>{t("Authorization")}</title>*/}
+                {/*</Head>*/}
                 <>
                     <h1>QREPUBLIK</h1>
-                    <p>Пожалуйста авторизуйтесь</p>
+                    <p>{t("Please log in")}</p>
                 </>
 
                 <div className={styles.form}>
                     {status === "error" ?
-                        <span style={{position: "absolute", top: "130px", color: "red"}}>Некорректные данные</span> : null}
+                        <span style={{
+                            position: "absolute",
+                            top: "130px",
+                            color: "red"
+                        }}>{t("Wrong data")}</span> : null}
                     <Form
                         name="authorization"
                         initialValues={{remember: true,}}
@@ -81,7 +101,7 @@ const Authorization = () => {
                             valuePropName="checked"
                             wrapperCol={{offset: 0}}
                         >
-                            <Checkbox>Remember me</Checkbox>
+                            <Checkbox>{t("Remember me")}</Checkbox>
                         </Form.Item>
 
                         <Form.Item>
@@ -93,21 +113,21 @@ const Authorization = () => {
                             }}
                                     type="primary"
                                     htmlType="submit">
-                                Войти
+                                {t("Login")}
                             </Button>
                         </Form.Item>
                     </Form>
-                    <>Если у вас не аккаунта
-                        <Link href={'/registration'}><a>Зарегистрируйтесь</a></Link>
+                    <>{t("If you do not have an account")}
+                        <Link href={'/registration'}><a>{t("Registration")}</a></Link>
                     </>
                 </div>
                 <h3 className={styles.footer}>
-                    <span>About Company </span>
-                    <span>Cookies policy </span>
-                    <span>Privacy statement </span>
-                    <span>Terms of use</span>
+                    <span>{t("About Company")} </span>
+                    <span>{t("Cookies policy")}</span>
+                    <span>{t("Privacy statement")} </span>
+                    <span>{t("Terms of use")}</span>
                 </h3>
-                <h3 style={{marginTop: "10px"}}>Copyright <CopyrightOutlined/>2022
+                <h3 style={{marginTop: "10px"}}>{t("Copyright")} <CopyrightOutlined/>2022
                     QRepublik US</h3>
             </div>
 

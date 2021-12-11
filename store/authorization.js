@@ -6,6 +6,7 @@ const initialState = {
         email:"",
         password:"",
     },
+    language:"ru"|"en"
 }
 
 export default function authorization(state = initialState, action) {
