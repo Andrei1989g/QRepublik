@@ -6,7 +6,6 @@ import {
     ContainerOutlined,
     FileImageOutlined,
     GiftOutlined,
-    GlobalOutlined,
     HeartOutlined,
     HomeOutlined,
     MenuFoldOutlined,
@@ -22,8 +21,7 @@ import {
 } from '@ant-design/icons';
 import styles from "./menu.module.css"
 import useTranslation from "next-translate/useTranslation";
-import {useRouter} from "next/router";
-import Link from "next/link";
+import SelectForm from "../../components/selectForm";
 
 
 const {SubMenu} = Menu;
@@ -39,17 +37,9 @@ export function SideBar() {
     };
     const image = "https://innovationmap.innoagency.ru/logo/%D0%9B%D0%BE%D0%B3%D0%BE1145.png"
 
-    let {locales, asPath} = useRouter()
-
-
     return (
         <>
             <div className={styles.header}>
-                <ul>
-                    {locales.map(locale => <li key={locale}>
-                        <Link href={asPath} locale={locale}><a>{locale}</a></Link>
-                    </li>)}
-                </ul>
                 <Button onClick={toggleCollapsed}
                         style={{
                             top: "8px",
@@ -68,12 +58,8 @@ export function SideBar() {
                                alt="logo"/>
                         <> QREPUBLIC</>
                     </span>
-                <GlobalOutlined style={{
-                    position: "absolute", right: "15px", top: "15px",
-                    color: "white", cursor: "pointer"
-                }}/>
+                <SelectForm/>
             </div>
-
             <div className={styles.sidebar} style={{width: 256, minHeight: "100vh"}}>
                 <Menu
                     defaultSelectedKeys={['1']}
@@ -92,31 +78,39 @@ export function SideBar() {
                         {t("About us")}
                     </Menu.Item>
                     <SubMenu key="sub1" icon={<ShoppingOutlined/>} title={t("Products")}>
-                        <Menu.Item key="4" icon={
-                            <PoundCircleOutlined/>}>{t("Nylon bracelet")}</Menu.Item>
-                        <Menu.Item key="5" icon={
-                            <PayCircleOutlined/>}>{t("Silicone bracelet")}</Menu.Item>
+                        <Menu.Item key="4" icon={<PoundCircleOutlined/>}>
+                            {t("Nylon bracelet")}
+                        </Menu.Item>
+                        <Menu.Item key="5" icon={<PayCircleOutlined/>}>
+                            {t("Silicone bracelet")}
+                        </Menu.Item>
                         <Menu.Item key="6" icon={
-                            <HeartOutlined/>}>{t("QRepublik ID Tag supports")}</Menu.Item>
+                            <HeartOutlined/>}>{t("QRepublik ID Tag supports")}
+                        </Menu.Item>
                         <Menu.Item key="7" icon={
-                            <GiftOutlined/>}>{t("Medical ID Sleeve")}</Menu.Item>
+                            <GiftOutlined/>}>{t("Medical ID Sleeve")}
+                        </Menu.Item>
                     </SubMenu>
                     <SubMenu key="sub2" icon={<AppstoreOutlined/>}
                              title={t("Information")}>
-                        <Menu.Item key="8" icon={<ReadOutlined/>}>{t("Notes")}</Menu.Item>
-                        <Menu.Item key="9"
-                                   icon={<TeamOutlined/>}>{t("Partners")}</Menu.Item>
+                        <Menu.Item key="8" icon={<ReadOutlined/>}>
+                            {t("Notes")}
+                        </Menu.Item>
+                        <Menu.Item key="9" icon={<TeamOutlined/>}>
+                            {t("Partners")}
+                        </Menu.Item>
                         <SubMenu key="sub3" icon={<ProfileOutlined/>}
                                  title={t("Contacts")}>
-                            <Menu.Item key="10"
-                                       icon={<HomeOutlined/>}>{t("Our shops")}</Menu.Item>
-                            <Menu.Item key="11" icon={
-                                <PhoneOutlined/>}>{t("Telephone")}</Menu.Item>
+                            <Menu.Item key="10" icon={<HomeOutlined/>}>
+                                {t("Our shops")}
+                            </Menu.Item>
+                            <Menu.Item key="11" icon={<PhoneOutlined/>}>
+                                {t("Telephone")}
+                            </Menu.Item>
                         </SubMenu>
                     </SubMenu>
                 </Menu>
             </div>
         </>
-
     );
 }

@@ -14,12 +14,9 @@ const Panel2 = () => {
     }
     let {t} = useTranslation("mainPage")
 
-    console.log("FROM PANEL ", isAuthorization)
-
-
     useEffect(() => {
         if (!isAuthorization) {
-            Router.push('/authorization')
+            Router.push('/')
         }
     }, [isAuthorization])
 

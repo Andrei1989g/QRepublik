@@ -1,19 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Checkbox, Form, Input} from "antd";
-import Router, {useRouter} from "next/router";
+import {useRouter} from "next/router";
 import Head from "next/head";
 import styles from "./authorization.module.css"
 import Link from "next/link";
-import {CopyrightOutlined, GlobalOutlined, QuestionOutlined} from "@ant-design/icons";
+import {CopyrightOutlined, QuestionOutlined} from "@ant-design/icons";
 import {useDispatch, useSelector} from "react-redux";
 import {isAuthorizationAC, setDataAC} from "../../store/authorization";
 import useTranslation from "next-translate/useTranslation"
+import SelectForm from "../../components/selectForm";
 
 const Authorization = () => {
 
-    let {locales, push, asPath} = useRouter()
-    // let titleName = router.locale === 'en' ? "Authorization"
-    //     : router.locale === 'ru' ? "Авторизация" : ""
+    let { push} = useRouter()
     let {t} = useTranslation("common")
 
     const [status, setStatus] = useState("error" | "")
@@ -37,7 +36,6 @@ const Authorization = () => {
     const onChangeValues = () => {
         setStatus("")
     }
-    console.log("FROM AUTH ", isAuthorization)
 
     if (isAuthorization) {
         push("/mainPage")
@@ -45,14 +43,9 @@ const Authorization = () => {
 
     return (
         <>
-            <GlobalOutlined
-                style={{position: "fixed", width: "20px", right: "23px", top: "19px"}}/>
-
-            <ul>
-                {locales.map(locale => <li key={locale}>
-                    <Link href={asPath} locale={locale}><a>{locale}</a></Link>
-                </li>)}
-            </ul>
+            <Head>
+                <title>{t("Authorization")}</title>
+            </Head>
 
             <QuestionOutlined style={{
                 position: "fixed",
@@ -61,14 +54,11 @@ const Authorization = () => {
                 bottom: "40px"
             }}/>
             <div className={styles.main}>
-                {/*<Head>*/}
-                {/*    <title>{t("Authorization")}</title>*/}
-                {/*</Head>*/}
                 <>
                     <h1>QREPUBLIK</h1>
-                    <p>{t("Please log in")}</p>
+                    <p>{t("Please login")}</p>
                 </>
-
+                <SelectForm/>
                 <div className={styles.form}>
                     {status === "error" ?
                         <span style={{
@@ -84,14 +74,20 @@ const Authorization = () => {
                         autoComplete="off">
                         <Form.Item
                             name="email"
-                            rules={[{required: true, message: 'Введите свой email !'},]}
+                            rules={[{
+                                required: true,
+                                message: 'Введите свой email !'
+                            },]}
                             validateStatus={status}>
                             <Input/>
                         </Form.Item>
 
                         <Form.Item
                             name="password"
-                            rules={[{required: true, message: 'Введите свой пароль !',},]}
+                            rules={[{
+                                required: true,
+                                message: 'Введите свой пароль !',
+                            },]}
                             validateStatus={status}>
                             <Input.Password/>
                         </Form.Item>
@@ -118,7 +114,9 @@ const Authorization = () => {
                         </Form.Item>
                     </Form>
                     <>{t("If you do not have an account")}
-                        <Link href={'/registration'}><a>{t("Registration")}</a></Link>
+                        <Link href={'/registration'}>
+                            <a>{t("Registration")}</a>
+                        </Link>
                     </>
                 </div>
                 <h3 className={styles.footer}>
@@ -127,10 +125,9 @@ const Authorization = () => {
                     <span>{t("Privacy statement")} </span>
                     <span>{t("Terms of use")}</span>
                 </h3>
-                <h3 style={{marginTop: "10px"}}>{t("Copyright")} <CopyrightOutlined/>2022
-                    QRepublik US</h3>
+                <h3 style={{marginTop: "10px"}}>{t("Copyright")}
+                    <CopyrightOutlined/>2022 QRepublik US</h3>
             </div>
-
         </>
     )
 };
