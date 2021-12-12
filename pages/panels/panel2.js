@@ -32,7 +32,7 @@ const Panel2 = () => {
                 borderRadius: "5px",
                 width: "300px",
                 marginTop: "40px"
-            }}>ВЫХОД</Button>
+            }}>{t("Logout")}</Button>
         </div>
     );
 };

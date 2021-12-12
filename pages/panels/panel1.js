@@ -1,5 +1,6 @@
 import styles from "./panels.module.css"
 import useTranslation from "next-translate/useTranslation";
+
 const Panel1 = () => {
     let {t} = useTranslation("mainPage")
     return (

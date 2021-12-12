@@ -1,4 +1,15 @@
 {
-  "Please log in": "Пожалуйста авторизуйтесь",
-  "TitleName": "Авторизация"
+  "Authorization": "Авторизация",
+  "Please login": "Пожалуйста авторизуйтесь",
+  "TitleName": "Авторизация",
+  "Wrong data": "Неверные данные",
+  "Remember me": "Запомнить меня",
+  "Login": "Войти",
+  "If you do not have an account": "Если у вас не аккаунта",
+  "Registration": "Зарегистрируйтесь",
+  "About Company": "О Компании",
+  "Cookies policy": "Политика файлов Cookie",
+  "Privacy statement": "Сведения о конфиденциальности",
+  "Terms of use": "Условия эксплуатации",
+  "Copyright": "Авторские права"
 }

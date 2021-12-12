@@ -2,8 +2,7 @@
   "locales": ["ru", "en"],
   "defaultLocale": "ru",
   "pages":{
-    "*": ["common"],
-    "/authorization": ["authorization"],
+    "*": ["authorization"],
     "/mainPage": ["mainPage"]
   }
 }

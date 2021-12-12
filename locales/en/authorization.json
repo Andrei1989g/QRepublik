@@ -1,4 +1,15 @@
 {
-  "Please log in": "Please log in",
-  "TitleName": "Authorization"
+  "Authorization": "Authorization",
+  "Please login": "Please login",
+  "TitleName": "Authorization",
+  "Wrong data": "Wrong data",
+  "Remember me": "Remember me",
+  "Login": "Login",
+  "If you do not have an account": "If you do not have an account",
+  "Registration": "Sign up",
+  "About Company": "About Company",
+  "Cookies policy": "Cookies policy",
+  "Privacy statement": "Privacy statement",
+  "Terms of use": "Terms of use",
+  "Copyright": "Copyright"
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'antd/dist/antd.css';
 import {Button, Image, Menu} from 'antd';
 import {
@@ -27,7 +27,7 @@ import SelectForm from "../../components/selectForm";
 const {SubMenu} = Menu;
 
 export function SideBar() {
-    const [state, setState] = React.useState({collapsed: false})
+    const [state, setState] = useState({collapsed: false})
     let {t} = useTranslation("mainPage")
 
     const toggleCollapsed = () => {
@@ -56,7 +56,7 @@ export function SideBar() {
                         <Image className={styles.image}
                                src={image}
                                alt="logo"/>
-                        <> QREPUBLIC</>
+                        <> QREPUBLIK</>
                     </span>
                 <SelectForm/>
             </div>

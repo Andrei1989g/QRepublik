@@ -2,11 +2,11 @@ import React from 'react';
 
 const initialState = {
     isAuthorization: false,
-    data:{
-        email:"",
-        password:"",
+    data: {
+        email: "",
+        password: "",
     },
-    language:"ru"
+    language: "ru"
 }
 
 export default function authorization(state = initialState, action) {
@@ -15,10 +15,10 @@ export default function authorization(state = initialState, action) {
             return {...state, isAuthorization: action.isAuthorization}
         }
         case "SET_DATA": {
-            return {...state,data: action.data}
+            return {...state, data: action.data}
         }
-        case "SET_LANGUAGE":{
-            return {...state,language: action.value}
+        case "SET_LANGUAGE": {
+            return {...state, language: action.value}
         }
         default:
             return state
@@ -31,15 +31,15 @@ export const isAuthorizationAC = (isAuthorization) => {
         isAuthorization
     }
 }
-export const setDataAC = ({email,password}) => {
+export const setDataAC = ({email, password}) => {
     return {
         type: "SET_DATA",
-        data:{email,password}
+        data: {email, password}
     }
 }
 export const setLanguageAC = (value) => {
     return {
         type: "SET_LANGUAGE",
-       value
+        value
     }
 }

@@ -13,7 +13,7 @@ import SelectForm from "../../components/selectForm";
 const Authorization = () => {
 
     let { push} = useRouter()
-    let {t} = useTranslation("common")
+    let {t} = useTranslation("authorization")
 
     const [status, setStatus] = useState("error" | "")
     const dispatch = useDispatch()
